@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>M.A.R.S Materials — Glass · Metal · Plastic</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #eee2e2;
+        --card: #e39776;
+        --muted: #f95c00;
+        --accent: #6ee7b7;
+        --glass: #7dd3fc;
+        --metal: #c7d2fe;
+        --plastic: #fbcfe8;
+        --card-radius: 16px;
+        --gap: 20px;
+        --max-width: 1100px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial;
+        background: linear-gradient(180deg,#eee2e2 60%,#eee2e2 0% )
+        color:#fcebcf;
+        background-color:#fcebcf;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        padding: 40px 20px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .container {
+        width: 100%;
+        max-width: var(--max-width);
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        gap: 16px;
+      }
+      .title {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        background-image: url(logoo.png/mars\ z.png);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #04263a;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+        flex-shrink: 0;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0;
+      }
+      p.lead {
+        margin: 0;
+        color:#823210;
+        font-size: 14px;
+      }
+
+      /* grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap);
+      }
+      @media (max-width: 920px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 620px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      /* card */
+      .card {
+        background: linear-gradient(
+          180deg,
+          #e39776;
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border-radius: var(--card-radius);
+        padding: 16px;
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.6),
+          inset 0 1px 0 rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.035);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        min-height: 360px;
+        background-color:#e39776;
+      }
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(2, 6, 23, 0.8);
+      }
+
+
+      .media {
+        border-radius: 12px;
+        overflow: hidden;
+        height: 170px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        position: relative;
+      }
+      .media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.02) saturate(1.05);
+        transform-origin: center;
+      }
+
+      .badge {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 12px;
+        color: #b83b1c;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.92),
+          rgba(255, 255, 255, 0.98)
+        );
+      }
+
+      .card h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+      .muted {
+        color:#823210;
+        font-size: 13px;
+        margin-top: 4px;
+      }
+      .desc {
+        flex: 1;
+        color: #f2f2f2;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .uses {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        color: #823210;
+
+
+      }
+      .use-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .use-list li {
+        background:#b83b1c, 0.02);
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 13px;
+        color:#000000;
+        border: 1px solid rgba(255, 255, 255, 0.02);
+      }
+
+      .meta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        font-size: 13px;
+        color: #823210;
+        margin-top: 6px;
+      }
+
+      /* color accents */
+      .glass .badge {
+        background: linear-gradient(90deg, var(--glass),#fcebcf);
+        color: #b83b1c;
+      }
+      .glass .card-title {
+        color: #b83b1c;
+      }
+      .metal .badge {
+        background: linear-gradient(90deg, var(--metal),#fcebcf );
+        color: #07123a;
+      }
+      .metal .card-title {
+        color: #b83b1c;
+      }
+      .plastic .badge {
+        background: linear-gradient(90deg, var(--plastic), #fcebcf);
+        color: #b83b1c;
+      }
+      .plastic .card-title {
+        color: #b83b1c;
+      }
+
+      footer {
+        margin-top: 22px;
+        color: #dd6345;
+        font-size: 13px;
+        text-align: center;
+      }
+
+      /* small helper button */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: #b83b1c, 0.03);
+        color: var(--accent);
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .btn:focus {
+        outline: 3px solid #b83b1c);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" role="main">
+      <header>
+        <div class="title">
+          <div class="logo" aria-hidden="true">
+            <img
+              src="logoo.png/mars z.png"
+              alt="ty"
+              width="50px"
+              height="50px"
+            />
+          </div>
+          <div>
+            <h1>M.A.R.S — mars advanced recycling system</h1>
+            <p class="lead">
+              Three common non-metabolic wastes & how they can be repurposed for
+              Martian construction.
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <section class="grid" aria-label="Materials grid">
+        <!-- GLASS -->
+        <article class="card glass" aria-labelledby="glassTitle">
+          <div class="media" role="img" aria-label="Glass material image">
+            <img
+              src="https://images.unsplash.com/photo-1654718421032-8aee5603b51f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z2xhc3MlMjB3YXN0ZXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="Glass fragments and bottles"
+            />
+
+            <div class="badge">Glass</div>
+          </div>
+
+          <div>
+            <h3 id="glassTitle" class="card-title">Glass</h3>
+            <div class="muted">Silicon-based, transparent, brittle</div>
+          </div>
+
+          <p class="desc">
+            Glass on Mars (recycled bottles, panels, or shards) is mostly
+            silicon dioxide derived. It is rigid and transparent, making it
+            useful for light-transmitting panels or thermal glazing in habitat
+            greenhouses.
+          </p>
+
+          <div class="uses" aria-hidden="false">
+            <strong style="font-size: 13px; color: var(--muted)"
+              >What it can be</strong
+            >
+            <ul class="use-list">
+              <li>
+                Translucent panels for greenhouse domes (light & partial
+                insulation)
+              </li>
+              <div class="media" role="img" aria-label="Glass material image">
+                <img
+                  src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxISEhUSEhIVFRUVGBcWFhYVFxUVFhYVFRgYFhUVFRUYHSgiGBolGxUWITEhJSkrLi4uFx81ODMsNygtLisBCgoKDg0OGhAQGi0dHx0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIALUBFwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAAECAwYFBwj/xABEEAABAwIDBQQGBwUIAgMAAAABAAIRAyEEEjEFIkFxgQZRYcEHEzKRsdFCUlRyoaLwFBYjksIXM0NEYoLS8VOyk+Hi/8QAGQEBAQEBAQEAAAAAAAAAAAAAAQACAwQF/8QAIBEBAQEAAwADAAMBAAAAAAAAAAERAiExAxJRE0Fhcf/aAAwDAQACEQMRAD8A9PaFY0KLQrAvW8pwE4CkAnQ0YBOAhMXtGlSc1tR2XPOUn2bRIJ4a8Ua1ChAJwE4CeEa0QTwkApIWI5Ug1ThKFasRhKFOEoUsQhPClCeFJGEgFJMhFCUJ08KpRhJOnAQjQlCkAnUkIShTTQpIEJiFMhMmJWQmhWEKJCUrIUSFYQokJjKEJQpgJ8qdSuElaGpI1YCAVgCiApharMSCyHa7tBiMJXHq8r2OpA5HCDnzPGZrxobNsQQY4arVYp5ax7hqGuI5gErxqvinVIc97nnvc4uPfF1SaLRmAxlTEPq1akZ6j2khpcWT6tjZY0ndmJI71t69KtgWU3MeXA2q03Xa1xGYZeItNxxCwOwHxImHSCLwbNFwtZhNuPyllWarSWuh5mHNcHWngbgjxRd6wzNutRsrtBRrQCcj/quNif8AS7j+BXZhZDEYShiXgscxkio6WAghrW5gKlOIkXEg3TYfH4nCuyn+LTADgbxkcJaQ7VtuBWNlayz/AFsAFKFztlbbo4izHQ76jrO6fW6LpBRJJSASRqNCUKSSijCeE6SkiQmhTISVqRAUkydSNCdJPCCUJQnSUcNCZSSUEVEhSSSEExCmVGEhAhNCnCWVOpEBShSDUHtXadLDtzVHR3NF3OPc0cUavBDyAJJgd5sEl5ptTaVWu8PqPLWk2Y12WGwY4w34nwFky6Tg435segNUwohTCq3FWMH8N/3XfArxqoNOS9mxY/hv+674FeMhthr1vCYOSexcD60Edw8mos0q9IwRnb469HfOUd2FpyX8vJq2L9nAjRceVsvTrxks7YvBY0ONiWu0g2PTv6LT7K7QGnIq7zMrRaJAZMcxBIQOI7PtdngcfILkYvBVqbXD2mwRfUDwOoR95euR+lnfFoOz+GpVX1mmmDJaWCTmYC4+zGmo3uFptKMo7axGFDPXA1ab80E/3jcrspDjoT4Hv1WKZjXMcHNLmm0XgjkQuzszbYIFOpduSoyRdwFQh0wTBhwnqVX9g/rL09B2dtOlXE03g97dHDmPPRGLF0sBQcKteiXgtFVzcpyinF2aQ4fDUcEXQ7Q1KLzTxDXOaHFgqhsEwYuND0PvVLqyz1qoShU4TF06rc1NwcPDh4Eag+BV6iSSSSiSipJKSKcBKE6tWEknATwgmhKFJMhIpJykkGTFOklYimhTTQpnFFbENYWhxgvOVviYJj8EPtXalLDML6ro7h9J0dw89FxPSEHeppZTDhVaQbCI43/V1kq4fVd62q5ziC1oc6Z4ewOFifHlJW+PHe3Pnz+o/HdqMTWeck0mCAGiQ45rS92rddNfAarmvqZC8vdL411InUDXrqe+NUYzDwHACBmbzvk1Py965+3KcVIH1R8XLtxk8eflyvoCtiCcoFo7tZj8P1MpJNpExwHxtw70l06crLXrbVMKDVYFwe4JtN1TLFMMMhwIcS3UQCHAGIvYgz3heV4zZ1Wg7JVblMSLggjvBC9axR0XnfavaVKvUY6k8PaGlpI0kHgeKJexyhdgRd3L/ivQGCywHYN13ch8Grf0zZc+brwvSGHpCXfe8gq9oYEFptwKJwurufkFdifZPIrlY6TxkcfsBrmiBwWbxWyn03CLi/kvT2UwWjkuZi8GC8W4HyROjWAZiXMnUQD4Hl4rvYHtKHsyV25wXAkk6AvD3SzQnW9vaK6O0thtLXW4FcivsJzTIFk/aX1m8M8H4PbLMLWqupUjVoPLcxYTmYADBa12ou7UjRbDZW1qOJbmo1A8DUaOb4PYbtPMLGbNwmTNbn0/7VVfZrS/OwmlUGj2Etd1jUaSOK7ZL44y2PRkgsXgu1Fehu4tnrGD/GpDeA76lMWPNseDStZgMfSrMz0nte3SWnQ9xGoPgbrNlbl0SkmSRhSSTJwoknTJIR0ySSkSSdJSMmIUkPjcZTpNL6jg0Dv4+AHFQXQuBtjtI2mfV0R62rMQLtBPfGp8AuZjdq18WHNpTSowd4+2/WwHTQdSEO6pSoZqVFueq6BFjeZIqOHC12tMWMkrrOH65cuf4FxdOqS51bfqEtvMtpgkDKItMzZvUqIw/tE652f0W5IqtiSc4e4ucHMa6MuVkZbNLbBg4cfxQtfEyXBgneac3ARl7/ELo4X1ZXIaHyfpMPuDFzcUz1zy6IAAEu6xDeJ8PiiThy7MTvHM259n6Og48+7ih9qP9W8iTJaNNYva2g9wTGaocWsDCPatJsT7J6AeHwToPEaNjw4xwPFJac7a9ThSauXtzbDcKwVHsc5pJbuxY5S4TPDdN+Xesfs30juFq9EOF96kYI/2OsfeFxtj2t1tJ0BvPyXnva5gFZsACWSYAEmTfmtXQ7RYfFtAouOYXcxzS1zRpfgdeBKyvbAfx2/c8yqeq+H7BNnN0+DVumNIWH9Hv0/1wavQGiy58r26cePSrC1YJnv8giqzwWnkUPh2Xdz8gpYilY8kdVqbgijoENUG+OR8k1J7gO9R9cC8cj5I+q+wnEt3TyPwTigCNEqx3TyKtp6LGN6Dp4Qb1uPkENWwF+i6lDU8/IJ8u9080y2CyVm62GIK5tTZ+V/rKL3Uan1mWnwc3Rw8CIWyq0ASOvkgsTgBIXSfJ+ud+P8AAGC7VPpbuMpwP/NSBcz/AHsuW8LieQC0mF2hRqECnVY8loeA1wduElodbhII6FZuvhSCuYzAGnUNXDPNGpxgAsd3h7DYiw8RwWsl8Z2z16CnCy2C7XZSGYyn6o6etZLqJPjxpzfWR4rQ7OxjK9NlVk5XjM2QQY4SDpyKxZjcuiEpTpoQSCdMnUiSVWKxLKbS97g1o1J/V1lMfturiHCnSmlTcTvkb7w0gOy9wv38yEzjazy5yOttftCymfV0h62qYAa24BP1iOPhqs/XoFx9di6gcTnDW/QBBgBob7Rnut3ngqW4inSmnQaHOJAc8ncG+bvfo4aWs37yoJE+se7O45wXvEs1t6tvHra67ceOOPLlvqFPEVDTLMwYwNAMGalQXsPC5tYKVXK0OpgENcRDBBedIzvGmnSVEUyAQ3d3ATxe4X4fRB6Ih+FysfA4AxcknxOp/Wq1rn2odRmWgiAWjKz2dQILvl38UWzCwD4OZA0A9jgqtl1S4VM0S17GkCN32CG20sRbxROIxTRmAuczSAPDL8kWpKo2M/3mf0Lk7VoesqnLfdFhcWzHTjrxICOfTqPzFxy7zZA8cvut/wBqrFY1mGL2hsktaQNB9K5d08UxUPS2XApuJ9o83Rkcfa4acAOqSBx2OqVAxgsGxAEyYaRcjmktdue/gn0nbYgNwrTrFSpy+g3+r+Vedytd2v2cRiqrnU3uD3SH03jNBa0gFjwQYmLObos0/Bt4VQPCs11F08zLPzrzcr29sjv+j538d4J/w4E8TnbYLpdsB/Hb9wfEoHsNhXsrvLmbhpEBwhzHb7LB7ZaT14IvtOR65kCBl06lPEcp0s9HP0uQ+DV6EzRefejj6XIfBq9EaLLHP114eK8Nq773kFbXFjyVWFF3fe8gr64seSz/AGVdEbo5IaozfHI+SMoDdHIIep7beR8kyqzpGtTIBg8FZSrEC4Vtcbp5FKm2wVqw2Gqgk8/IK0e10Q1OkCXc/IJNzB2s2V0OxbjvDr5J3i4/XBUeu3hIjVXONxH6sjDqFaiCR18kBXwW9buXTcd4dfJMBvdEy2KyVwKmENwRIXNw+EqUDnwtQ0jMmmZdQcT9anNtdRB0Wx9SDPPyCDrYEEA8luc/1i8PwFS7ZMYAMTSfSeS1st36bsxAzCpaAAZIMHuzLTU3hwBBBBEgjQg8Qspi8DaCA4HUET+C5WHo1sMZwtQtbMmg8k0nXuG6mnOlu/RP1l8Z2z16CuNtzb7KMsZv1To0XieLu5UbG7UMquNOu0YeqXQxjnSHtgXbUgNcZzbovEWXC23hga1QyGnMXCBqQ5wE+PyVw47exz55OjubUxB9ZWcHEZiKd8oGRxGUDU7pPzuEtu0szaYbIcQ4uGhAz6O+qPC3gEEazhd7zmgiAZcQW3mbDRO0l4c6JDczokxOYG51fzK7Znbz/bTUwYAABAgTGVntGCB9M8/FF0MKS4Fxky6558BoPiq9jVDUzudwywO6XEkBdCpXa0xqZdYa6otqnbm7JdPrQ4AEU2mOMOD4J43g69yL2jVaQ9kk5gBukg91iLjmg9n4ANa8NhktDnQZe4wbvPfbjJ8UficMGU6uUXyz3mUX0wBgdnBjSxjRSYC3dbHEjWNDee/xXRZh2tDgB9Jn9C52ynGkxwqe057SBx+ja3G2iMfVe/NlGUFzddfox5Hgqr/q6u8NzyR7TT/6Lk42gK9QuaPZaBJsIvx148Pej/2MbxccxDmwT45eHVUY7EOY97WRJY0iznH6QgNHLUmEwVW3AtaKZJ9o3GjfYcb8TeNSUk+0Hscyk0EHKQTYPA3HC/Ae1xTrTOOL2h2jWo4hzKtH1gzOyvpuh2WxbmY+xOVzZgi4KEZtfCP3Xu9WTwrMcwfzAFp9673aKnOJd1/9WLmnBNdaAY92n4rz5XrmL+zeBptrOqUwwtcyA9haQbtscpjhPvVHaho9ez7vmUV2f2VTpVnPa0AlhBIESMzTp0VHagfx2fd8ynj6uXhejbQ8h8Gr0VhsvOPRu6AZ7h8Gr0Sm4Qscp26cPCwurvveTVfW0PJD4Y3d97+lqIqmxWa0jQG6OQ+CoqDfbyPkiMOd0ch8FTU9tvI+SktreyeSlR9kck1b2TyT0fZHJBRoC7ufkEgN7p5pUDd3PyCf6fTzUjPbvDqo1KUER+rKx53h1Tv1HPyKdFiovIIm+qk2oC7opP1HVQLAXdE6zlXU3XPPyCdp3R0+KoYwgmD+oCYVLCR3fFWHRNSmCei52KwAInx80cKkmx4Js1uvmjuKyVmsbs0OaWPaHtOocAR7lxq+zq1P+5eXD/x1SSQL2p1TJaL6GRyW7LAc364KuvgWum3D5rpPk/XO/HrzpldpcGODqdSRuVBBNrltyHiYuCei7jXgNqAmCc4EX1K6W09iteC17A9vcRp4g8D4hcb9lrUA4M/isIjJUMVB92r9Lk/+Zdpz2PPfjvFLZGHJDgCQNydJNyOnHvXZw2Ga0iB9e/HXiVydkbQYczWtcKm7NN1nCHakH6MmJEg8F0RQe875gb1m8+9HL0SdOXs0GkKma5e0QBeLOuY017kbiDUcHE7oABI1JH65qjY9bOKoyhuVg01Mhxk+KOx9VsPaXRmAHD/qfBV9U8BbPyPDnNGjmCSZPtDj5I+qQM0/WZ/QufRzAEMBMlpJda8i4EaeEBWOwZMl7iTmaLWF8s89eKkWIxrQXASSXN0Hdl17tOMId9N9Vzp3AAJGsi8WmPfKP9Q1ocAIhzP6FytuYose5oL95gjLlAJ3tXXI4aJ4/wCCrn0KbG0nOi51ce9jrAaDkE65eJxVaoGCzA07o0cYaRN9bE6BMtAENvesIqPLXFxdoQCI0zEwCYaBbuOmiMo41mVtQkAOEg6i44HTiF5nUxTjBMhkkNE6G5InXUkx428egzFOdAfENlokSbgjenkDHUXXzv5uU9ez6vTtlYljiXAiACCSRIM8e7TiuZ2mcDWYQQd3hfiVkMFtx9H2DlL7SMp1cC4AgTwA048F2q20vW1GkubpYAlxjqBBtpfv4rpw+aW9izp0fR6yWkeA+DVu20rWKw/o8EB3T4Bb5psulrXGKMM5wLufkETUxBi4VWH1dz8gr6wsjezhsNiBlHIJnvBeI7j5KhjRlHIKhw3hHj5JyDa6tU7p5J6J3RyXOe94GqlSxRAEhZ+rX2G0Dd3PyCed/p5hBUMWJdNr+QVra4LrHgfiFnDq+od4dUqhu3n5FVPdvN6p6jrjn5FSWPfcdUwqb/RU1HXHVUl+90WpBa6NM3PPyCQG6OnxQVKrrz8grGV90cx8VYtEPpCVTvDxv5q31t/14Jgfj5qiQFTWbf8ASIz68lWG6/rgk6nrFrKS90H8EDi8IHcOKse8iZ8NFW7EiRz8lSX+hbL64W0MCGupPIByvYQSJLZMEg8LSiHYu+4C4y7TS579FbtNwcGj/XS/B4KcQO4C/wCJXScv1x5cO+nKwlGWuDS1oDQSGf7rORGMoNYyq4C4bIJubeJQWzAKQqSZLmiwkwQHC/v7kXiKzyHnKGiATJvHIf8A0ujlPAmw6znU3uqTOdvtSLS3v4ao2vjGDMJk5mH3ZOvBC4am2pmdmLoLRxaNRI7yL8VfiDSotcXFrBnZckC+6YE6mAT0RVPFdTEVHZsrYGZsz37sc+Hcnp4Quc4vMkNBtaxnjrFu9czHdqqDcwZmqEkEEDK2wbqXX4dxWW2x2wzuPsNkBuUTVIie+031y9yz/JI3Pj5VuqrWU2Ujl1ImGkkksf3JLynF7XrVtQ94GnrHGByboPwSR/N/jX8H+g6obujdJZYNLZO9qAQJiTOsctTzXtlxzB2kyLZjI48b+P4qFWuWyJfM2kEW1tc9/fwQ9fGTrxBnQmfrdb2/7Xikrs6dLGMESJOsnenWZJjiD7upOp4gWyWcbEgkWM8PfdZo1LjJUgEAwZ3J4TOklW0a7m23SB3DQcfGI90JvANt2e7R1aDyWkFpgZSJHiZF5sBrHl69s7Gtq021GEEOANjME8D3FfPzcY/JoCc1i0AOMiYPHy/BbLsLt9lGpDnxSfGaZs88xe44R87hyvG5fDHq2HN3c/IIh5sgcLUkkjiR8AinOsvSVdP2RyCoPtDr5K+n7I5KqN4dVphc9tk1JthyCtcLJqQsOQWG1VKmJdz8gonDjN0V9EXdz8gpAb3Q/EIOBXUiCIJU3lwI438iiHjeb1Uqjbt5+RRqwK55kSO9QzAu6I5zN4dUzaYz9FaMD02TMd/kEgwwOnxRTcMCXc/IKIw5yiHHh48U/ZfVQdU4d8fNXOpunQG3JVnS4Iv5rU5DDsq6q41teSHa0XgqVRhvyV0u0q9UX6LMdqtpOpU2uYY/iNDjGaGkGTC7GMJCxfaOsbEw5rXZnMd7L8rSQHf6Qb9FXqM0NU7WVKTc9Qesp58zXAgHKxwExG6DIiU22u31N9IspUquZ7bOljQwz33J9yx2NxYewG7Z43gkm+VoIiwBg/UCq2c2nlGZxk5oiw7s1gSD4GRZcL8mDyNDsnt7iKB/jYc1KQAbLXA1WgSZIgZxreBotrhNs0MXTe+k4gOZlAcC1wJvDm6jVeMV/Wse5zcwAcd65zCbRaPpKWAxL2vDg8tLo0kEHQz0lany32jOse07Pa2i1zQc8ua7dFtW24xpxQnafZ1bFUnNpkUnNe1wc4ZhJblgidIdrw7lncB2nr0P74Z2GN9o1g2LmfKOq6m2u0/rcK9+DcTUzsMUw2o7KIzQ0gmbAxE9y9H3ljH0svTCVtmOa51PEPzPYS14DiWZhrAgW6K6lQpiwjpf4IU4/O9zntcXkkvLwQ7MdS4RIVoqOMEEd27HxXB6RrI4D3pkA6lOsnmknCznrRZu9A1Dg2ZA0MixEql9FtQZhY2AvAMRqCOI8RwXf2jh6WIYcRSgPA322B0Ik+IHHiAstWkDXutoPALGZWUG0zOUgg+Gtr8NRxRtOm4AOyiBwBm/iNR1+qVTgKsOA0BEGT4/iJARlLDEyWvEQTGrTIvprqJCqzRmCgEGbZrAuBtYEeEiFq+w1EvxALZblc4yW5wXDvJMcr8OJWNwlTLIdBAgHKQQT3+GpC3PZHbop1WB5GVwDQGgOyOk/S1vNweY1JOMn2mp6jh3Xdz8gi3OsubQfd3PyCKNSy9NMEUDujkoH2h1VVB+6OSZz94dVIc42SondHJDuqWT0X7o5LLS6ibu5+QUg7e6H4hD033dz8gnz73Q/EIQhzt4dfgrHm7efkUG59wri67efkUFe7UdU7fb6KBdcdUmu3+iEJpm7ufkEw9kdPioU3XPPyCqdUho/XFJF8enyUCLdfNUsrX6KTn26+agXqwc1v1CVSiLxIt80zX+1+uCm92vL5q1YBxdF17g6ajx8Fi+1RDIzUyczi0Bgzk7t908IW5xVSJ6fFZftCS5pAsTmHvYQs87cMjyvbOLY6n6todDSC0Oa1pkcIHUeMLkUXFzcoYMwMt4GeYI1RzqeVjajgASTDDM5PrDuE/FAF7Q3MQekGRpPP5rk5WVdUpve2WXMAGmdbEXHeRew7guUakHK5xuCLXNtco79Vc57g7KBB7xPQx7ldVwLyHO3S50vbqRe+UkkBtp7/lqB0Nm7RikKZcXtebG7S0i/doY4dy7mwcBQdU9ZUDtyC1xc6lmfIsSwhxETa/isZs/axAGjcnFtiSbCD36+89TKm2XRwE/RiIGmuseKe5RdbjtDtWjWlooiQRlc72hAALMw3gJk/gVlhXDZL7Rq5pkmNSYERzQGFxpu4tB0mPDUwTfzXI2ljTWfma4xAbfw0kol5W7ap1419LEMdo5p6weoKdYv1lrh9rucb2mByvHFJdNrW12NsUhQeC0uAeHAhpAkRcX5jlC4ZpuN+PAT7oPHVd7tkDmpx3P/pPks+cQeENHcLW1if1KWjvcROZpH6tKJweLe2IvaIJMRaBHM/ihxWmxuY4kkkk3v7vcnYHRMWHlqYQHVr4im4jXM7/SNZGp1t3rXdiRRsHAklwIkBwIaHSDYkQb9yyuCqZm+zLYFzczeCJsAJ7lbV2lWw+X1Yyk7zSbtgzcZSINzbxWZ6ntmHr68/IIn9oC8QpdtcePpM6h3/JFM7dY7uYejvmvT0O3s1GuIHIJzWEhePs7f4wfQZ+uisb6RcXxosP+7/8AKOl29hNYd6lSrCByXkQ9JOI44Zv88f0q1vpJqfZx70ZDtes0qok8/IJzV3uh8l5Q30lu44c9CP8AkrG+ksccPU6Zf+SMh16r6y46ojPdvPyK8pb6Smf+Cp7wiWekulaaVQdZ8lmw69SL7jqkH7/RebN9JeH4tqDoT5KxvpMwkyTU/kcfJGHXpTH3PPyCoqO3f13rB0vSXg/rvv3sI/AqY9ImCIj1pHNpTi1uKZupvfbr5rE0+3+Cn+/HUFXfv5gTb9pZr/q7+SsGte1/tfrgri/Xl81jmdtcFeMTSv4oxva/CGf49K4+sPFVh12Ma/Xp8Vntqv4+Pkrq3aLDOmK9Lh/iM+a52P2hRP8AjUv/AJGfNBjBdoySKm5OY0xmBPstfYRMG5PDis8xsMh1g4iDHs6R8I6LZ7dY31DiCJltpBP94ItyWZxDy6j6uPpNMze4nuXOxWOXXd6tsEzBF4GkTwuLj8VXh8YaRMu1N5s0QTJ94j9SrdoM3RoAWvm9z7MH4+9CY6QZyyIbaYBJAcSe/wBoqkYvEFGXNGrTIi4jQR32OvgiG4mq5pG8e+bwNNdf+lU3RzhLYGljG82QPC6fDAybWIIJv3d4W6MdTZ9VobvtkaG5bM2gkEW5XudEW+vSJJp0m0WkZTJcQbAEAPOh8Ba/fcOniYAMNJiLwOl+CGxmOe4hr8rRNi0h08NW8L6LMjLoVcwcHU5NuDAOF4EGRPfrqkuf+20Yyku8SNJE2ANoSTh7fT2K7B7NqR6zB03RpOYxOvHwVH9m+yfsFH3H5pJLo0kPR1sr7DS9zuPVSHo92Xp+xUvzfNJJSKn6PtltILcHTBGkZhH4p3+j7ZZMnBUif93zSSUjf2fbL+xUvzfNP+4GzPsdP83zTpK1F+4OzPsdP83zS/cHZn2Ol+b5pJK1YX7g7M+x0vzfNL9wdmfY6X5vmkkrUX7gbM+x0vzfNWU+w2zWiBgqPVub8SkkpJfuTs37FQ/kCg7sLs0/5Kj/ACwkkjFqv9wNmfY6f5vml+4GzPsdL83zTpJRv3A2Z9ipfm+advYHZg/yVLu0J80klJL9xNmfYqP8vP5qB9H+y/sVL83zSSUjD0fbL+xUvc75pf2e7L+xUvcfmkkpJN7AbMGmDp/m+am7sNs0iDhKcd2980klm8Zf6P2v6m3sXs8f5WncgnW5GnFRd2I2cb/stP8AN80kk5FtQqdg9muicHTMaTm468U1TsDsx2uDpnnm5d6SSsi2oj0e7LEgYKlB19q/4ph6O9lD/JUvzfNJJWBE+jjZP2Gj7nfNN/Ztsn7BR9zvmkklHb6ONkjTA0fc75pJJKT/2Q=="
+                  alt="Translucent panels"
+                />
+              </div>
+            </ul>
+          </div>
+
+          <div class="meta" aria-hidden="true">
+            <div>Key trait: transparency</div>
+            <div>•</div>
+            <div>Best combined with: regolith & binder</div>
+          </div>
+        </article>
+
+        <!-- METAL -->
+        <article class="card metal" aria-labelledby="metalTitle">
+          <div class="media" role="img" aria-label="Metal material image">
+            <img
+              src="https://images.unsplash.com/photo-1657742239061-64b6de9e0c4a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWV0YWwlMjB3YXN0ZXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="Metal scrap and pieces"
+            />
+            <div class="badge">Metal</div>
+          </div>
+
+          <div>
+            <h3 id="metalTitle" class="card-title">Metal</h3>
+            <div class="muted">Strong, conductive, high tensile strength</div>
+          </div>
+
+          <p class="desc">
+            Metal scraps (aluminum, steel, electronic frames) are valuable for
+            load-bearing elements, reinforcements, and conductive traces. Metals
+            can be melted or mechanically reworked into structural connectors or
+            fibers.
+          </p>
+
+          <div class="uses">
+            <strong style="font-size: 13px; color: var(--muted)"
+              >What it can be</strong
+            >
+            <ul class="use-list">
+              <li>Fasteners, brackets, or reinforcement plates for habitats</li>
+              <div class="media" role="img" aria-label="Metal material image">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1756717255429-18e4b5598eaf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZHVyYWJsZSUyMHBsYXRlcy58ZW58MHx8MHx8fDA%3D"
+                  alt="gh"
+                />
+              </div>
+            </ul>
+          </div>
+
+          <div class="meta" aria-hidden="true">
+            <div>Key trait: strength</div>
+            <div>•</div>
+            <div>Best combined with: melted plastics or regolith matrix</div>
+          </div>
+        </article>
+
+        <!-- PLASTIC -->
+        <article class="card plastic" aria-labelledby="plasticTitle">
+          <div class="media" role="img" aria-label="Plastic material image">
+            <img
+              src="https://images.unsplash.com/photo-1595278069441-2cf29f8005a4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBsYXN0aWMlMjB3YXN0ZXxlbnwwfHwwfHx8MA%3D%3D"
+              alt="Recycled plastic pieces"
+            />
+            <div class="badge">Plastic</div>
+          </div>
+
+          <div>
+            <h3 id="plasticTitle" class="card-title">Plastic</h3>
+            <div class="muted">Thermoplastic waste: flexible & meltable</div>
+          </div>
+
+          <p class="desc">
+            Common plastics (HDPE, PP, PET) can be shredded and melted; when
+            mixed with regolith they form a durable composite that is easy to
+            mold or extrude for bricks, tiles, or 3D printing filament.
+          </p>
+
+          <div class="uses">
+            <strong style="font-size: 13px; color: var(--muted)"
+              >What it can be</strong
+            >
+            <ul class="use-list">
+              <li>Molded bricks and tiles (plastic acts as binder)</li>
+              <div class="media" role="img" aria-label="Plastic material image">
+                <img
+                  src="https://images.unsplash.com/photo-1627882206813-8c1ffd86efec?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="gh"
+                />
+              </div>
+            </ul>
+          </div>
+
+          <div class="meta" aria-hidden="true">
+            <div>Key trait: melt & bind</div>
+            <div>•</div>
+            <div>Best combined with: regolith powder (filler)</div>
+          </div>
+        </article>
+      </section>
+
+      <footer>
+        <div>
+          let's make mars clean and sustainable for the next generations
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Small enhancement: keyboard focus for accessibility - allow Enter to "open" cards (if you later add interactive expand)
+      document.querySelectorAll(".card").forEach((card) => {
+        card.tabIndex = 0;
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            // future expansion hook
+            card.classList.toggle("focused");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
